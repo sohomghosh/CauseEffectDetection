@@ -1,4 +1,4 @@
-name: torchgeom
+name: base
 channels:
   - pytorch
   - anaconda
@@ -130,4 +130,4 @@ dependencies:
     - torch-scatter==2.0.6
     - torch-sparse==0.6.9
     - torch-spline-conv==1.2.1
-prefix: /home/fiona/anaconda3/envs/torchgeom
+prefix: /usr/local/lib/envs/base/
