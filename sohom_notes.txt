@@ -1,0 +1,26 @@
+environment.yml
+
+data in `data` folder
+
+preprocess.py
+    python preprocess.py data/train.csv train
+    python preprocess.py data/val.csv val
+    python preprocess.py data/test.csv test
+
+run.py
+    sudo CUDA_VISIBLE_DEVICES=1 /home/fiona/anaconda3/envs/torchgeom/bin/python3 run.py \
+    --data_dir data --labels data/labels.txt --model_name_or_path bert-base-cased \
+    --output_dir outs --max_seq_length 350 --num_train_epochs 5 --per_gpu_train_batch_size 4 \
+    --save_steps 3000 --seed 123 --do_train --do_eval --do_predict --overwrite_output_dir
+
+run_submission.sh
+    {
+    # ADD POS
+    # EMBED, ADD_FEATS, GRAPHLSTM
+    sleep 5 &&
+    sudo CUDA_VISIBLE_DEVICES=3 /home/fiona/anaconda3/envs/torchgeom/bin/python3 run.py \
+    --data_dir data --model_name bert-large-cased --output_dir "outs/embed/08" --max_seq_length 350 \
+    --num_train_epochs 10 --per_gpu_train_batch_size 4 --save_steps 5000 --seed 123 \
+    --do_train --do_predict --overwrite_output_dir --use_graph  --graph_purpose embed \
+    --graph_hidden 1024 --graph_out 512 --add_feats --add_pos --use_graphlstm
+    }
