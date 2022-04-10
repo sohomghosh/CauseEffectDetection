@@ -16,9 +16,10 @@
 import importlib
 from collections import OrderedDict
 
-from ...configuration_utils import PretrainedConfig
-from ...dynamic_module_utils import get_class_from_dynamic_module
-from ...utils import copy_func, logging
+from configuration_utils import PretrainedConfig
+from dynamic_module_utils import get_class_from_dynamic_module
+import logging
+from .utils import copy_func
 from .configuration_auto import AutoConfig, model_type_to_module_name, replace_list_option_in_docstrings
 
 
